@@ -3,6 +3,7 @@ package objfunc
 import "math"
 
 // KGE : the Kling-Gupta effeciency measure
+// ref: Gupta, H.V., H. Kling, K.K. Yilmaz, G.F. Martinez, 2009. Decomposition of the mean squared error and NSE performance criteria: Implications for improving hydrological modelling. Journal of Hydrology 377: 80-91.
 // uniformly scaled between correlation, variablity and bias
 // optimial maximization to 1.0
 func KGE(o []float64, s []float64) float64 {
@@ -20,6 +21,6 @@ func KGEscaled(o []float64, s []float64, sr, sa, sb float64) float64 {
 	r := r(o, s)
 	g1 := math.Pow(sr*(r-1.), 2.)
 	g2 := math.Pow(sa*(ss/so-1.), 2.)
-	g3 := math.Pow(sr*(ms/mo-1.), 2.)
+	g3 := math.Pow(sb*(ms/mo-1.), 2.)
 	return 1. - math.Sqrt(g1+g2+g3)
 }

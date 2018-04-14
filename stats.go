@@ -22,15 +22,28 @@ func meansd(d []float64) (float64, float64) {
 }
 
 func r(x, y []float64) float64 {
-	// see page 396 of Walpole Meyers Myers
+	// see page 367 & 396 of Walpole Meyers Myers
 	if len(x) != len(y) {
 		panic("Coefficient of determination error: unequal array lengths")
 	}
-	mx, sxx := meansd(x)
-	my, syy := meansd(y)
-	sxy := 0.
+	c, mx, my := 0, 0., 0.
 	for i := 0; i < len(x); i++ {
-		sxy += (x[i] - mx) * (y[i] - my) // covariance
+		if x[i] != -9999. && y[i] != -9999. {
+			mx += x[i]
+			my += y[i]
+			c++
+		}
+	}
+	mx /= float64(c)
+	my /= float64(c)
+
+	sxx, syy, sxy := 0., 0., 0.
+	for i := 0; i < len(x); i++ {
+		if x[i] != -9999. && y[i] != -9999. {
+			sxx += math.Pow(x[i]-mx, 2.)     // variance in x
+			syy += math.Pow(y[i]-my, 2.)     // variance in y
+			sxy += (x[i] - mx) * (y[i] - my) // covariance
+		}
 	}
 
 	if sxx > 0. && syy > 0. {
