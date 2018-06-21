@@ -2,19 +2,19 @@ package objfunc
 
 import "math"
 
-// KGE : the Kling-Gupta effeciency measure
+// KGE : the Kling-Gupta efficiency measure
 // ref: Gupta, H.V., H. Kling, K.K. Yilmaz, G.F. Martinez, 2009. Decomposition of the mean squared error and NSE performance criteria: Implications for improving hydrological modelling. Journal of Hydrology 377: 80-91.
-// uniformly scaled between correlation, variablity and bias
-// optimial maximization to 1.0
+// uniformly scaled between correlation, variability and bias
+// optimal maximization to 1.0
 func KGE(o []float64, s []float64) float64 {
 	return KGEscaled(o, s, 1., 1., 1.)
 }
 
-// KGEscaled : the Kling-Gupta effeciency measure
+// KGEscaled : the Kling-Gupta efficiency measure
 // sr: correlation scale factor,
-// sa: variablity scale factor, and
+// sa: variability scale factor, and
 // sb: bias scale factor
-// optimial maximization to 1.0
+// optimal maximization to 1.0
 func KGEscaled(o []float64, s []float64, sr, sa, sb float64) float64 {
 	ms, ss := meansd(s)
 	mo, so := meansd(o)
@@ -22,5 +22,6 @@ func KGEscaled(o []float64, s []float64, sr, sa, sb float64) float64 {
 	g1 := math.Pow(sr*(r-1.), 2.)
 	g2 := math.Pow(sa*(ss/so-1.), 2.)
 	g3 := math.Pow(sb*(ms/mo-1.), 2.)
+
 	return 1. - math.Sqrt(g1+g2+g3)
 }

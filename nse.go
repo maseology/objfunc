@@ -2,15 +2,15 @@ package objfunc
 
 import "math"
 
-// NSE : the Nash-Sutcliffe effeciency measure
-// optimial maximization to 1.0
+// NSE : the Nash-Sutcliffe efficiency measure
+// optimal maximization to 1.0
 func NSE(o []float64, s []float64) float64 {
 	return NSEpow(o, s, 2.)
 }
 
-// NSEpow : the Nash-Sutcliffe effeciency measure
+// NSEpow : the Nash-Sutcliffe efficiency measure
 // p: power
-// optimial maximization to 1.0
+// optimal maximization to 1.0
 func NSEpow(o []float64, s []float64, p float64) float64 {
 	var n, d float64
 	om, _ := meansd(o)
