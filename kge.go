@@ -1,6 +1,8 @@
 package objfunc
 
-import "math"
+import (
+	"math"
+)
 
 // KGE : the Kling-Gupta efficiency measure
 // ref: Gupta, H.V., H. Kling, K.K. Yilmaz, G.F. Martinez, 2009. Decomposition of the mean squared error and NSE performance criteria: Implications for improving hydrological modelling. Journal of Hydrology 377: 80-91.
@@ -18,7 +20,11 @@ func KGE(o []float64, s []float64) float64 {
 func KGEscaled(o []float64, s []float64, sr, sa, sb float64) float64 {
 	ms, ss := meansd(s)
 	mo, so := meansd(o)
-	r := r(o, s)
+	r := rm(o, s, mo, ms)
+	if math.IsNaN(r) {
+		return math.NaN()
+	}
+
 	g1 := math.Pow(sr*(r-1.), 2.)
 	g2 := math.Pow(sa*(ss/so-1.), 2.)
 	g3 := math.Pow(sb*(ms/mo-1.), 2.)
