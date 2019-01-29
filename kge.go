@@ -14,8 +14,8 @@ func KGE(o, s []float64) float64 {
 
 // LogKGE KGE of log transformed data
 func LogKGE(o, s []float64) float64 {
-	o, s = logTransform(o, s)
-	return KGEscaled(o, s, 1., 1., 1.)
+	ol, sl := logTransform(o, s)
+	return KGEscaled(ol, sl, 1., 1., 1.)
 }
 
 // KGEscaled : the Kling-Gupta efficiency measure
