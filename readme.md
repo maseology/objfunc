@@ -6,6 +6,7 @@ A package containing a set of objective functions used in hydrologic modelling
 
 ## Objective functions:
 
+* **Bias:** mass balance error
 * **NSE:** the Nash-Sutcliffe efficiency factor (Nash and Sutcliffe, 1970)
 * **KGE:** the Kling-Gupta efficiency measure (Gupta et.al., 2009)
 

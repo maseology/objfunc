@@ -12,6 +12,16 @@ func KGE(o, s []float64) float64 {
 	return KGEscaled(o, s, 1., 1., 1.)
 }
 
+// KGEi "overloads" KGE
+func KGEi(oi, si []interface{}) float64 {
+	o, s := make([]float64, len(oi)), make([]float64, len(si))
+	for i := range oi {
+		o[i] = oi[i].(float64)
+		s[i] = si[i].(float64)
+	}
+	return KGEscaled(o, s, 1., 1., 1.)
+}
+
 // LogKGE KGE of log transformed data
 func LogKGE(o, s []float64) float64 {
 	ol, sl := logTransform(o, s)
