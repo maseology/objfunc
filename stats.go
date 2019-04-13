@@ -23,7 +23,7 @@ func meansd(d []float64) (float64, float64) {
 	return s, math.Sqrt(ss / float64(c-1))
 }
 
-func r(x, y []float64) float64 {
+func r(x, y []float64) (float64, float64, float64, float64) {
 	// see page 367 & 396 of Walpole Meyers Myers
 	if len(x) != len(y) {
 		panic("Coefficient of determination error: unequal array lengths")
@@ -51,9 +51,9 @@ func r(x, y []float64) float64 {
 	}
 
 	if sxx > 0. && syy > 0. {
-		return math.Copysign(sxy/math.Sqrt(sxx*syy), sxy)
+		return math.Copysign(sxy/math.Sqrt(sxx*syy), sxy), sxx, syy, sxy
 	}
-	return math.NaN()
+	return math.NaN(), sxx, syy, sxy
 }
 
 func rm(x, y []float64, mx, my float64) float64 {
