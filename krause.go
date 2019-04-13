@@ -20,6 +20,9 @@ func Krause(o, s []float64) float64 {
 func Krausei(oi, si []interface{}) float64 {
 	o, s := make([]float64, len(oi)), make([]float64, len(si))
 	for i := range oi {
+		if oi[i] == nil || si[i] == nil {
+			continue
+		}
 		o[i] = oi[i].(float64)
 		s[i] = si[i].(float64)
 	}
