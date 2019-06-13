@@ -8,7 +8,7 @@ func NSE(o, s []float64) float64 {
 	return NSEpow(o, s, 2.)
 }
 
-// NSEi "overloads" KGE
+// NSEi "overloads" NSE
 func NSEi(oi, si []interface{}) float64 {
 	o, s := make([]float64, len(oi)), make([]float64, len(si))
 	for i := range oi {
