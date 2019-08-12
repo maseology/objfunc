@@ -8,16 +8,6 @@ func NSE(o, s []float64) float64 {
 	return NSEpow(o, s, 2.)
 }
 
-// NSEi "overloads" NSE
-func NSEi(oi, si []interface{}) float64 {
-	o, s := make([]float64, len(oi)), make([]float64, len(si))
-	for i := range oi {
-		o[i] = oi[i].(float64)
-		s[i] = si[i].(float64)
-	}
-	return NSEpow(o, s, 2.)
-}
-
 // NSEpow : the Nash-Sutcliffe efficiency measure
 // p: power
 // optimal maximization to 1.0
