@@ -3,7 +3,7 @@ package objfunc
 import (
 	"math"
 
-	"github.com/maseology/mmaths"
+	"github.com/maseology/mmio"
 )
 
 func logTransform(o, s []float64) (_, _ []float64) {
@@ -17,7 +17,7 @@ func logTransform(o, s []float64) (_, _ []float64) {
 			sl[i] = math.Log10(s[i])
 		}
 	}
-	mmaths.Rev(x)
+	mmio.Rev(x)
 	for _, i := range x {
 		ol = append(ol[:i], ol[i+1:]...)
 		sl = append(sl[:i], sl[i+1:]...)
