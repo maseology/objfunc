@@ -22,3 +22,10 @@ func NSEpow(o, s []float64, p float64) float64 {
 	}
 	return 1. - n/d
 }
+
+// NNSE rescales the NSE form [-Inf,1] to [-1,-1], where 0 has the same meaning as NSE=0
+// modifed from: Nossent and Bauwens, 2012: Application of a normalized Nash-Sutcliffe efficiency to improve the accuracy of the Sobol’ sensitivity analysis of a hydrological mode. Geophysical Research Abstracts, Vol. 14.
+func NNSE(o, s []float64) float64 {
+	// return 1. / (2. - NSEpow(o, s, 2.))  // original form: [0,-1], where .5 has the same meaning as NSE=0
+	return 2./(2.-NSEpow(o, s, 2.)) - 1. // modified form
+}

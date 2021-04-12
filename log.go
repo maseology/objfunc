@@ -22,5 +22,5 @@ func logTransform(o, s []float64) (_, _ []float64) {
 		ol = append(ol[:i], ol[i+1:]...)
 		sl = append(sl[:i], sl[i+1:]...)
 	}
-	return ol[:len(ol)], sl[:len(sl)]
+	return ol[:], sl[:]
 }
