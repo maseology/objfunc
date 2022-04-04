@@ -4,6 +4,22 @@ import (
 	"math"
 )
 
+func minmax(d []float64) (min, max float64) {
+	min, max = math.MaxFloat64, -math.MaxFloat64
+	for _, v := range d {
+		if math.IsNaN(v) {
+			continue
+		}
+		if v > max {
+			max = v
+		}
+		if v < min {
+			min = v
+		}
+	}
+	return
+}
+
 func meansd(d []float64) (float64, float64) {
 	c, s, ss := 0, 0., 0.
 	for i := 0; i < len(d); i++ {

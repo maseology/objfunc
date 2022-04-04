@@ -1,6 +1,9 @@
 package objfunc
 
-import "math"
+import (
+	"log"
+	"math"
+)
 
 // NSE : the Nash-Sutcliffe efficiency measure
 // optimal maximization to 1.0
@@ -14,6 +17,9 @@ func NSE(o, s []float64) float64 {
 func NSEpow(o, s []float64, p float64) float64 {
 	var n, d float64
 	om, _ := meansd(o)
+	if len(o) != len(s) {
+		log.Fatalf("NSEpow array lengths not matching %d %d\n", len(o), len(s))
+	}
 	for i := range o {
 		if !math.IsNaN(s[i]) && !math.IsNaN(o[i]) {
 			n += math.Pow(s[i]-o[i], p)
