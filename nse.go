@@ -35,3 +35,17 @@ func NNSE(o, s []float64) float64 {
 	// return 1. / (2. - NSEpow(o, s, 2.))  // original form: [0,-1], where .5 has the same meaning as NSE=0
 	return 2./(2.-NSEpow(o, s, 2.)) - 1. // modified form
 }
+
+func NSEsmooth(o, s []float64, nstep int) float64 {
+	nn, fn := len(o)-nstep, float64(nstep)
+	oo, ss := make([]float64, nn), make([]float64, nn)
+	for i := 0; i < nn; i++ {
+		for j := 0; j < nstep; j++ {
+			oo[i] += o[i+j]
+			ss[i] += s[i+j]
+		}
+		oo[i] /= fn
+		ss[i] /= fn
+	}
+	return NSEpow(oo, ss, 2.)
+}

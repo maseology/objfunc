@@ -8,6 +8,9 @@ A package containing a set of objective functions used in hydrologic modelling
 
 * **Bias:** mass balance error
 * **NSE:** the Nash-Sutcliffe efficiency factor (Nash and Sutcliffe, 1970)
+    $$
+        R = 1-\frac{\sum(Q_o-Q_m)^2}{\sum(Q_o-\overline{Q}_o)^2}
+    $$
 * **KGE:** the Kling-Gupta efficiency measure (Gupta et.al., 2009)
 
 ## References
