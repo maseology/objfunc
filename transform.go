@@ -4,7 +4,7 @@ import "math"
 
 func Standardize(x []float64) (y []float64, mean, sd float64) {
 	y = make([]float64, len(x))
-	mean, sd = meansd(x)
+	mean, sd = Meansd(x)
 	for i, v := range x {
 		if math.IsNaN(v) {
 			panic("Standardize error, must use clean data (no NaNs)")

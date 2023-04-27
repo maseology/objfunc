@@ -24,8 +24,8 @@ func LogKGE(o, s []float64) float64 {
 // sb: bias scale factor
 // optimal maximization to 1.0
 func KGEscaled(o, s []float64, sr, sa, sb float64) float64 {
-	ms, ss := meansd(s)
-	mo, so := meansd(o)
+	ms, ss := Meansd(s)
+	mo, so := Meansd(o)
 	r := rm(o, s, mo, ms)
 	if math.IsNaN(r) {
 		return math.NaN()

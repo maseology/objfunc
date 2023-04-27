@@ -20,7 +20,7 @@ func minmax(d []float64) (min, max float64) {
 	return
 }
 
-func meansd(d []float64) (float64, float64) {
+func Meansd(d []float64) (float64, float64) {
 	c, s, ss := 0, 0., 0.
 	for i := 0; i < len(d); i++ {
 		if math.IsNaN(d[i]) {
