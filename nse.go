@@ -11,6 +11,11 @@ func NSE(o, s []float64) float64 {
 	return NSEpow(o, s, 2.)
 }
 
+func LogNSE(o, s []float64) float64 {
+	lo, ls := logTransform(o, s)
+	return NSEpow(lo, ls, 2.)
+}
+
 // NSEpow : the Nash-Sutcliffe efficiency measure
 // p: power
 // optimal maximization to 1.0
