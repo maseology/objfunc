@@ -54,3 +54,30 @@ func NSEsmooth(o, s []float64, window int) float64 {
 	}
 	return NSEpow(oo, ss, 2.)
 }
+
+func NSEslide(o, s []float64, window int) float64 {
+	a := window / 2
+	nsemax := -9999.
+	lo := len(o)
+	for j := -a; j < window-a; j++ {
+		aa := j
+		if aa < 0 {
+			aa *= -1
+		}
+		nn := lo - aa
+		oo, ss := make([]float64, nn), make([]float64, nn)
+		for i := range nn {
+			ii := i + j
+			if ii < 0 || ii >= lo {
+				continue
+			}
+			oo[i] = o[i]
+			ss[i] = s[ii]
+		}
+		nse := NSEpow(oo, ss, 2.)
+		if nse > nsemax {
+			nsemax = nse
+		}
+	}
+	return nsemax
+}
