@@ -7,6 +7,7 @@ import (
 
 // NSE : the Nash-Sutcliffe efficiency measure
 // optimal maximization to 1.0
+// Nash, J.E. and J.V. Sutcliffe, 1970.  River flow forecasting through conceptual models, Part I - A discussion of principles. Journal of Hydrology, 10. pp. 282-290.
 func NSE(o, s []float64) float64 {
 	return NSEpow(o, s, 2.)
 }
