@@ -18,6 +18,11 @@ func LogKGE(o, s []float64) float64 {
 	return KGEscaled(ol, sl, 1., 1., 1.)
 }
 
+// KGEdevations : the Kling-Gupta efficiency measure without bias. Use when calibrating where absolutes are not global (for example: lake stages against an arbitrary datum)
+func KGEdevations(o, s []float64) float64 {
+	return KGEscaled(o, s, 1., 1., 0.)
+}
+
 // KGEscaled : the Kling-Gupta efficiency measure
 // sr: correlation scale factor,
 // sa: variability scale factor, and
