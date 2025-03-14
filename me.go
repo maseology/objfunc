@@ -2,12 +2,12 @@ package objfunc
 
 import "math"
 
-// MAE is the mean absolute error
-func MAE(o, s []float64) float64 {
+// ME is the mean error
+func ME(o, s []float64) float64 {
 	c, n := 0., 0.
 	for i := range o {
 		if !math.IsNaN(s[i]) && !math.IsNaN(o[i]) {
-			n += math.Abs(s[i] - o[i])
+			n += s[i] - o[i]
 			c++
 		}
 	}
